@@ -1,3 +1,5 @@
+mod ownership;
+
 const M:u64 = 1000003;
 
 fn main() {
@@ -52,4 +54,20 @@ fn may_contain(s: &str, arr: &[bool]) -> bool {
         }
     }
     true
+}
+
+// 摄氏度转华氏度
+fn celsius_to_fahrenheit(celsius: f64) -> f64 {
+    celsius * 9.0 / 5.0 + 32.0
+}
+
+// 华氏度转摄氏度
+fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
+    fahrenheit - 32.0 * 5.0 / 9.0
+}
+
+// 生成第n个斐波那契数
+fn fibonacci(n: i32) -> i64 {
+    let n :i64 = if n <= 1 { n as i64 } else { fibonacci(n-1) + fibonacci(n-2) };
+    n
 }
