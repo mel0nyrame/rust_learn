@@ -1,6 +1,5 @@
-mod ownership;
 
-const M:u64 = 1000003;
+const M: u64 = 1000003;
 
 fn main() {
     // 元组
@@ -18,14 +17,47 @@ fn main() {
     // 条件语句
     const VALUE: i8 = 0;
     let value: i32 = if VALUE == 0 { 114514 } else { 1919180 };
-    println!("{}",value);
-
+    println!("{}", value);
 
     // 小的布尔过滤器
     let mut bits = [false; 1000003];
     insert("hello", &mut bits);
     println!("{}", may_contain("hello", &bits));
     println!("{}", may_contain("world", &bits));
+
+    // 所有权示例
+    let s1 = String::from("123");
+    let s2 = s1;
+
+    // println!("{}",s1); 报错,此时s1被移动到了s2,不同于浅拷贝和深拷贝
+
+    let int1 = 32;
+    let int2 = int1;
+
+    // 基本数据类型都实现了Copy trait,这个trait可以让移动之后的变量依然能使用
+    println!("int1:{} int2:{}", int1, int2);
+
+    // 引用借用示例
+    let s1 = String::from("hello");
+
+    let len = calculate_length(&s1);
+
+    println!("The length of '{}' is {}.", s1, len);
+
+    let mut s = String::from("hello");
+
+    let r1 = &s; // 没问题
+    let r2 = &s; // 没问题
+    println!("{} and {}", r1, r2);
+    // 此位置之后 r1 和 r2 不再使用
+
+    let r3 = &mut s; // 没问题
+    println!("{}", r3);
+
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
 
 fn hash_with_seed(s: &str, seed: i32) -> i32 {
@@ -68,6 +100,9 @@ fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
 
 // 生成第n个斐波那契数
 fn fibonacci(n: i32) -> i64 {
-    let n :i64 = if n <= 1 { n as i64 } else { fibonacci(n-1) + fibonacci(n-2) };
-    n
+    if n <= 1 {
+        n as i64
+    } else {
+        fibonacci(n - 1) + fibonacci(n - 2)
+    }
 }
