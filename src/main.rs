@@ -1,4 +1,3 @@
-
 const M: u64 = 1000003;
 
 fn main() {
@@ -54,6 +53,36 @@ fn main() {
     let r3 = &mut s; // 没问题
     println!("{}", r3);
 
+    // 结构体
+    let user = User {
+        name: String::from("zhangsan"),
+        age: 12,
+        sex: String::from("man"),
+    };
+    println!("{:?}", user);
+
+    let user2 = User {
+        name: String::from("lisi"),
+        age: 11,
+        sex: String::from("man"),
+    };
+
+    let result = User::compare_to_age(&user, &user2); // 实际上类似于java中的静态方法
+
+    println!("{}", result);
+}
+
+#[derive(Debug)]
+struct User {
+    name: String,
+    age: i32,
+    sex: String,
+}
+
+impl User {
+    fn compare_to_age(&self, user: &User) -> bool {
+        self.age > user.age
+    }
 }
 
 fn calculate_length(s: &String) -> usize {
