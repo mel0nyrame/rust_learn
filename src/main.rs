@@ -70,6 +70,20 @@ fn main() {
     let result = User::compare_to_age(&user, &user2); // 实际上类似于java中的静态方法
 
     println!("{}", result);
+
+    // 枚举
+    let var = Type::VAR;
+    println!("{:?}", var);
+
+    let x: i8 = 5;
+    let y: Option<i8> = Some(x);
+
+    // let sum = x + y; 报错因为不同类型
+}
+#[derive(Debug)]
+enum Type {
+    VAR,
+    CONST,
 }
 
 #[derive(Debug)]
