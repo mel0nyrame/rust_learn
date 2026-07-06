@@ -79,6 +79,17 @@ fn main() {
     let y: Option<i8> = Some(x);
 
     // let sum = x + y; 报错因为不同类型
+
+    let c = 2;
+    match c {
+        1 => {
+            println!("c is {}", 1)
+        }
+
+        other => {
+            println!("c is not 1")
+        }
+    }
 }
 #[derive(Debug)]
 enum Type {
