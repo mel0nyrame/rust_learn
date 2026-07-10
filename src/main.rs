@@ -1,3 +1,6 @@
+use std::f64::consts::PI;
+use rand::RngExt;
+
 const M: u64 = 1000003;
 
 fn main() {
@@ -159,4 +162,14 @@ fn fibonacci(n: i32) -> i64 {
     } else {
         fibonacci(n - 1) + fibonacci(n - 2)
     }
+}
+
+
+#[test]
+fn test_rand_mod() {
+    // ? api改了大多数教程都过时了对于最新的rand
+    // let random = rand::thread_rng().rng.gen_range(1..2);
+    let random1 = rand::rng().random_range(1..2);
+    let random2 = rand::random_range(1f64..2f64);
+    println!("random1:{} random2:{}",random1,random2);
 }
