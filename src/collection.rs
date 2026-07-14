@@ -43,8 +43,6 @@ pub mod vec {
 
     // Abhorrent Java mindset
     pub mod object_list_example {
-        use std::fmt::Display;
-
         #[derive(Debug)]
         pub enum CsvRow {
             DATE(i64),
@@ -63,5 +61,34 @@ pub mod vec {
             println!("{:?}", list);
         }
 
+    }
+}
+
+pub mod string {
+
+    #[test]
+    pub fn simple_str_example() {
+        let s1 = "hello world";
+        let s2 = String::from("hello world");
+
+        println!("{}", s1.eq(&s2));
+        println!("{}",s1 == s2);
+
+        let mut s3 = String::from("hello");
+        s3.push_str(" world");
+        println!("{}", s3);
+
+        let hello = "Здравствуйте";
+
+        let s4 = &hello[0..4];
+        println!("{}",s4); // 不是Здра
+
+        for c in hello.chars() {
+            println!("{}",c);
+        }
+
+        for b in hello.bytes() {
+            println!("{}",b);
+        }
     }
 }
