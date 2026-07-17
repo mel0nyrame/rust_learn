@@ -4,6 +4,7 @@ pub mod structs;
 pub mod matcher;
 pub mod misc;
 pub mod collection;
+pub mod error;
 
 use std::fs;
 use std::path::Path;
